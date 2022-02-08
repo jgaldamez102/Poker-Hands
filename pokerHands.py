@@ -32,6 +32,15 @@ def getPlayerNames(playersList):
         returnNames.append(name.getName())
     return returnNames
 
+#Where the game lives
+def pokerGameStart(deck, playersList):
+    print('Each player will now get one card twice going clockwise\n')
+    time.sleep(1)
+    for i in range(0, len(playersList)*2):
+        playersList[i%len(playersList)].addCard(deck.give_random_card())
+        print("Card given to " + playersList[i%len(playersList)].getName())
+        time.sleep(.5)
+    return 
 if __name__=="__main__":
     #gathering all the information needed
     name = input('What is your name? ')
@@ -60,4 +69,5 @@ if __name__=="__main__":
         print("Shuffling...")
     deck.shuffle_deck()
     print("Shuffled, we can begin the game now. ")
+    pokerGameStart(deck, playersList)
     
